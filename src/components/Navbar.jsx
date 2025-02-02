@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from '../utils/constants';
 import { Link, useNavigate } from 'react-router-dom';
 import { removeUser } from '../utils/userSlice';
+
 import axios from 'axios';
+import { removeConnection } from '../utils/connectionSlice';
+import { resetFeed } from '../utils/feedSlice';
+import { resetRequests } from '../utils/requestSlice';
 const Navbar = () => {
   const navigate=useNavigate()
   const dispatch=useDispatch()
