@@ -1,18 +1,18 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user,allowButtons }) => {
   const { _id, firstName, lastName, photoUrl, age, gender, about } = user;
-  console.log(user);
   const dispatch = useDispatch();
+  const theme = useSelector((store) => store.theme);
 
   const handleSendRequest = async (status, userId) => {
     try {
       await axios.post(
-        BASE_URL + "/request/send/" + status + "/" + userId,
+        `${BASE_URL}/request/send/${status}/${userId}`,
         {},
         { withCredentials: true }
       );
@@ -21,29 +21,51 @@ const UserCard = ({ user }) => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen px-4">
-      <div className="card bg-base-300 w-full max-w-md shadow-xl md:max-w-lg lg:max-w-xl">
-        <figure>
-          <img src={photoUrl} alt="User" className="w-full h-64 object-cover rounded-t-xl" />
-        </figure>
-        <div className="card-body p-4 sm:p-6">
-          <h2 className="card-title text-lg sm:text-xl font-semibold">{firstName + " " + lastName}</h2>
-          {age && gender && <p className="text-sm sm:text-base">{age + ", " + gender}</p>}
-          <p className="text-sm sm:text-base">{about}</p>
-          <div className="card-actions justify-center my-4 flex flex-col sm:flex-row gap-2">
+    <div className={`pt-20 pb-16 px-4 ${
+      theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-800'
+    }`}>
+      <div className="max-w-md mx-auto rounded-xl overflow-hidden shadow-lg">
+        <img 
+          src={photoUrl} 
+          alt={`${firstName}'s photo`} 
+          className="w-full h-64 object-cover"
+        />
+        
+        <div className={`p-6 ${
+          theme === 'dark' ? 'bg-gray-800' : 'bg-white'
+        }`}>
+          <h2 className="text-xl font-semibold mb-2">
+            {`${firstName} ${lastName}`}
+          </h2>
+          
+          {age && gender && (
+            <p className={`mb-2 ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+            }`}>
+              {`${age}, ${gender}`}
+            </p>
+          )}
+          
+          <p className={`mb-6 ${
+            theme === 'dark' ? 'text-gray-400' : 'text-gray-700'
+          }`}>
+            {about}
+          </p>
+          
+        {allowButtons &&   <div className="flex flex-col sm:flex-row gap-3">
             <button
-              className="btn btn-primary w-full sm:w-auto"
+              className="w-full px-4 py-2 rounded-lg font-medium text-white bg-red-500 hover:bg-red-600 transition-colors"
               onClick={() => handleSendRequest("ignored", _id)}
             >
               Ignore
             </button>
             <button
-              className="btn btn-secondary w-full sm:w-auto"
+              className="w-full px-4 py-2 rounded-lg font-medium text-white bg-green-500 hover:bg-green-600 transition-colors"
               onClick={() => handleSendRequest("interested", _id)}
             >
               Interested
             </button>
-          </div>
+          </div>}
         </div>
       </div>
     </div>
