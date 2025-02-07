@@ -25,9 +25,10 @@ const Login = () => {
         { withCredentials: true }
       );
       dispatch(addUser(res.data.user));
-      return navigate("/");
+      console.log("kane")
+       navigate("/");
     } catch (err) {
-      setError(err?.response?.data || "Something went wrong");
+      setError( "Invalid Credentials");
     }
   };
 

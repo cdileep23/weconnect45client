@@ -42,12 +42,12 @@ const Navbar = () => {
     <nav className={`w-full ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} shadow-md fixed`}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+   
           <div className="flex-shrink-0 font-bold text-xl">
-            <Link to="/">We Connect</Link>
+            We Connect
           </div>
 
-          {/* Desktop Menu */}
+      
           {user && (
             <div className="hidden md:flex items-center space-x-4">
               <Link to="/" className="hover:text-blue-500">Feed</Link>
@@ -64,7 +64,7 @@ const Navbar = () => {
             </div>
           )}
 
-          {/* Mobile menu button */}
+       
           {user && (
             <div className="md:hidden flex items-center">
               <button 
