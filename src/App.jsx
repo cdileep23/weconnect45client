@@ -9,7 +9,8 @@ import { Provider } from 'react-redux';
 import { appStore } from "./utils/appStore";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
-import Chat from "./components/chat";
+import Chat from "./components/Chat1.jsx";
+
 
 
 function App() {
