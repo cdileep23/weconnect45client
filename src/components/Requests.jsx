@@ -21,7 +21,7 @@ const Requests = () => {
   };
 
   const fetchRequests = async () => {
-    if (requests) return;
+    
     try {
       const response = await axios.get(
         `${BASE_URL}/user/requests/received`,

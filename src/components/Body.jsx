@@ -36,7 +36,7 @@ const Body = () => {
       theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'
     }`}>
       <Navbar />
-      <main className="flex-grow w-full ">
+      <main className="flex-grow w-full mt-4 mb-4">
         <div className="container mx-auto px-4">
           <Outlet />
         </div>

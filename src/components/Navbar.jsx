@@ -39,7 +39,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`w-full ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} shadow-md fixed`}>
+    <nav className={`w-full ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} shadow-md`}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
    

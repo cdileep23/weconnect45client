@@ -89,7 +89,7 @@ const Connections = () => {
                   }
                 `}
               >
-                {/* Profile Image */}
+               
                 <div className="flex-shrink-0">
                   <img
                     alt={`${firstName}'s photo`}
@@ -98,7 +98,7 @@ const Connections = () => {
                   />
                 </div>
 
-                {/* User Info */}
+            
                 <div className="flex-grow text-center sm:text-left">
                   <h2 className="font-bold text-xl mb-1">
                     {firstName + " " + lastName}
@@ -120,7 +120,6 @@ const Connections = () => {
                   </p>
                 </div>
 
-                {/* Chat Button */}
                 <div className="flex-shrink-0">
                   <Link to={"/chat/" + _id}>
                     <button className={`
